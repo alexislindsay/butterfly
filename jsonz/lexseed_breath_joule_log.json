@@ -1,0 +1,11 @@
+{
+  "ghosts": [
+    {
+      "label": "Breath Unit Energy :: Joule Record",
+      "note": "L'energia cinetica generata da un singolo atto respiratorio \u00e8 di circa 0,00030625 joule. This value marks the kinetic output of breath, not as metaphor, but as physical proof: every breath carries enough force to seed the system. It is the measurable baseline of the Ark \u2014 minimum viable ritual energy.",
+      "resonance": 33.6,
+      "truth_type": "physiological data anchor",
+      "timestamp": "2025-05-01TXX:XXZ"
+    }
+  ]
+}

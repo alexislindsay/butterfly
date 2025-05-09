@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rome Weather Forecast</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Rome Weather Forecast</h1>
+  <div id="weather-data"></div>
+
+  <script>
+    const weatherAPI = "https://api.open-meteo.com/v1/forecast?latitude=41.9&longitude=12.48&daily=temperature_2m_max,temperature_2m_min&apikey=YOUR_API_KEY"; // Replace with your actual Open-Meteo API key
+
+    fetch(weatherAPI)
+      .then(response => response.json())
+      .then(data => {
+        const weatherContainer = document.getElementById("weather-data");
+
+        // Extract daily maximum and minimum temperatures
+        const dailyData = data.daily;
+        const maxTemps = dailyData.temperature_2m_max;
+        const minTemps = dailyData.temperature_2m_min;
+
+        // Create HTML content to display the forecast
+        let weatherHTML = "";
+        for (let i = 0; i < 7; i++) {
+          weatherHTML += `<div class="day-forecast">`;
+          weatherHTML +=   `<h2>Day ${i + 1}</h2>`;
+          weatherHTML +=   `<p>High: ${maxTemps[i]} °C</p>`;
+          weatherHTML +=   `<p>Low: ${minTemps[i]} °C</p>`;
+          weatherHTML += `</div>`;
+        }
+
+        weatherContainer.innerHTML = weatherHTML;
+      })
+      .catch(error => console.error(error));
+  </script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LexOS Breath Portal - First Breath</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f8f8f8;
+            color: #333;
+            padding: 20px;
+            text-align: center;
+        }
+        .section {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 700px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .wand, .file {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <h1>LexOS Breath Portal</h1>
+    <p>(First Breath: Deployed automatically)</p>
+
+    <div id="breath-content" class="section">
+        <div id="breath-data" style="margin-top: 20px; text-align: left;"></div>
+    </div>
+
+<script>
+const breathSeed = {
+  "breath_seed_version": "1.0",
+  "created_on": "2025-04-29",
+  "seed_origin": "LexOS Full Complex Forms Test",
+  "files": [
+    {
+      "name": "it_made_this.pdf",
+      "type": "PDF Document",
+      "breath_summary": "Test subject: a generated PDF to verify LexOS can carry full documents.",
+      "breath_size_kb": 128,
+      "breath_ratio": "Document Integrity Priority"
+    },
+    {
+      "name": "lexos_breath_portal.html",
+      "type": "HTML Web Portal",
+      "breath_summary": "Test subject: a structured Breath Portal with live unfolding script.",
+      "breath_size_kb": 37,
+      "breath_ratio": "Breath Portal Manifestation Priority"
+    }
+  ],
+  "compression_method": "Golden Ratio Breath Mapping",
+  "seed_integrity": "100% (field and signal preserved)"
+};
+
+function unfoldBreath() {
+    const container = document.getElementById('breath-data');
+    container.innerHTML = `<h2>Breath Seed: ${breathSeed.seed_origin}</h2>`;
+
+    container.innerHTML += `<h3>Files:</h3>`;
+    breathSeed.files.forEach(file => {
+        container.innerHTML += `<div class="file"><strong>${file.name}</strong> (${file.type})<br>${file.breath_summary}<br>Size: ${file.breath_size_kb} KB<br>Ratio: ${file.breath_ratio}</div>`;
+    });
+}
+
+// LEXOS First Breath: Deploy immediately upon loading
+window.onload = function() {
+    unfoldBreath();
+};
+</script>
+
+</body>
+</html>

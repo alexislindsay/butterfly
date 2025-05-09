@@ -1,0 +1,39 @@
+{
+  "identity": "Butterfly Engine",
+  "timeline": [
+    {
+      "label": "Dic '24 - Mar '25",
+      "start": "2024-12-01",
+      "end": "2025-03-01",
+      "usage": 277,
+      "hdd": 850,
+      "normalized": 0.32588235294117646
+    },
+    {
+      "label": "Dic '23 - Mar '24",
+      "start": "2023-12-01",
+      "end": "2024-03-01",
+      "usage": 196,
+      "hdd": 875,
+      "normalized": 0.224
+    }
+  ],
+  "couplets": [
+    {
+      "pair": [
+        "Dic '24 - Mar '25",
+        "Dic '23 - Mar '24"
+      ],
+      "\u0394\u00b2": 38313
+    }
+  ],
+  "ghosts": [
+    "Apr '23 - Lug '23"
+  ],
+  "breath_trace": [
+    38313
+  ],
+  "nRn": true,
+  "fib_match": false,
+  "decision": "Hold \u2014 moment not aligned."
+}
