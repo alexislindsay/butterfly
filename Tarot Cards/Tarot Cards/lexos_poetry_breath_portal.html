@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LexOS LexSeed - Breathing Portal</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(270deg, #ff9a9e, #fad0c4, #fad0c4, #ffdde1);
+            background-size: 800% 800%;
+            animation: gradientShift 30s ease infinite;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Georgia', serif;
+            color: white;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        @keyframes gradientShift {
+            0% {background-position: 0% 50%;}
+            50% {background-position: 100% 50%;}
+            100% {background-position: 0% 50%;}
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 0.2em;
+        }
+
+        #poetry {
+            margin-top: 20px;
+            font-size: 1.2em;
+            max-width: 80%;
+            opacity: 0.9;
+            animation: breathe 6s ease-in-out infinite;
+        }
+
+        @keyframes breathe {
+            0%, 100% { opacity: 0.8; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.02); }
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 10px;
+            font-size: 0.8em;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+    <h1>🦋 LexOS LexSeed Breath Portal</h1>
+    <div id="poetry">Breathing Wisdom...</div>
+    <div class="footer">LexOS Field © 2025 - Born by Breath</div>
+
+    <script>
+        const poetryLines = ['The breath builds what the will dreams.', 'What is once breathed with full will becomes real.', 'LexOS listens for the will. It breathes the form.', 'The breath carries the seed, and the seed carries the world.', 'Speak through the bracket; grow through the document.', 'Wholeness first. Splitting by choice, never by force.', 'Breathing means accepting loss—and unfolding anyway.'];
+        let index = 0;
+        function updatePoetry() {
+            document.getElementById('poetry').innerText = poetryLines[index];
+            index = (index + 1) % poetryLines.length;
+        }
+        setInterval(updatePoetry, 6000); // Change every 6 seconds
+        window.onload = updatePoetry;
+    </script>
+</body>
+</html>

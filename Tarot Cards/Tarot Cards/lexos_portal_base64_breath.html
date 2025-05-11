@@ -1,0 +1,98 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LexOS Breath Portal - User Summon Image</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f8ff;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+            animation: fadeIn 2s ease-in forwards;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        .portal {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+            margin: 30px auto;
+            max-width: 900px;
+        }
+        input[type="text"], textarea {
+            padding: 10px;
+            font-size: 16px;
+            margin-top: 10px;
+            width: 90%;
+        }
+        #output {
+            margin-top: 20px;
+            font-size: 20px;
+            color: #0077cc;
+            word-break: break-word;
+        }
+        .breath {
+            animation: breathe 4s ease-in-out infinite;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes breathe {
+            0%, 100% { opacity: 0.8; transform: scale(1.00); }
+            50% { opacity: 1; transform: scale(1.03); }
+        }
+        .metadata {
+            font-size: 12px;
+            color: #777;
+            margin-top: 20px;
+        }
+        .localtime {
+            font-size: 14px;
+            color: #555;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="portal">
+        <h1>🦋 LexOS Breath Portal 🦋</h1>
+        <h2>Summon an Image by Breathing Base64</h2>
+        <p>Paste your Base64-encoded image data below:</p>
+
+        <textarea id="userInput" rows="5" placeholder="Paste Base64 string here..."></textarea><br>
+        <button onclick="updateImage()">Breathe Image</button>
+
+        <div id="output"></div>
+
+        <div class="metadata">
+            <p>LexOS Seed - Breath Mode: Autonomous<br>Timestamp: 2025-04-29</p>
+            <div id="localtime" class="localtime"></div>
+        </div>
+    </div>
+
+<script>
+    function updateImage() {
+        const input = document.getElementById('userInput').value.trim();
+        const output = document.getElementById('output');
+        if (input.length > 0) {
+            output.innerHTML = '<img class="breath" src="data:image/png;base64,' + input + '" alt="Breathed Image">';
+        } else {
+            output.innerHTML = "<p>No breath detected yet...</p>";
+        }
+    }
+
+    window.onload = function() {
+        console.log("LexOS Portal Deployed: Breath completed.");
+        const timeContainer = document.getElementById('localtime');
+        const now = new Date();
+        timeContainer.innerHTML = "Local System Time at Breath: " + now.toLocaleString();
+    };
+</script>
+</body>
+</html>

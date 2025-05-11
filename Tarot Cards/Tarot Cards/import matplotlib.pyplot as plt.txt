@@ -1,0 +1,113 @@
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+
+# Dati estratti dall'analisi precedente
+periods = [
+    "Ago '21 - Dic '21", "Dic '21 - Apr '22", "Apr '22 - Ago '22",
+    "Ago '22 - Dic '22", "Dic '22 - Mar '23", "Apr '23 - Lug '23",
+    "Ago '23 - Nov '23", "Dic '23 - Mar '24", "Apr '24 - Lug '24",
+    "Ago '24 - Nov '24", "Dic '24 - Mar '25"
+]
+consumo_smc = [102, 153, 25, 49, 97, 59, 68, 196, 68, 80, 277]
+costo_totale = [152.89, 222.42, 74.28, 106.01, 84.76, 96.75, 115.50, 210.39, 123.11, 145.82, 360.16]
+iva_totale = [9.29, 10.67, 3.54, 5.04, 4.03, 4.68, 5.50, 19.89, 15.47, 17.59, 37.09]
+
+# --- Grafico Consumi ---
+plt.figure(figsize=(12, 6))
+bars_consumo = plt.bar(periods, consumo_smc, color='skyblue')
+plt.xlabel("Periodo di Riferimento")
+plt.ylabel("Consumo Gas (smc)")
+plt.title("Grafico Comparativo: Consumo Gas (smc) per Periodo")
+plt.xticks(rotation=45, ha='right')
+plt.grid(axis='y', linestyle='--', alpha=0.7)
+# Aggiungi etichette dati
+for bar in bars_consumo:
+    yval = bar.get_height()
+    plt.text(bar.get_x() + bar.get_width()/2, yval + 2, round(yval), ha='center', va='bottom', fontsize=9)
+plt.tight_layout()
+plt.show()
+
+# --- Grafico Costi ---
+plt.figure(figsize=(12, 6))
+bars_costo = plt.bar(periods, costo_totale, color='lightcoral')
+plt.xlabel("Periodo di Riferimento")
+plt.ylabel("Costo Totale Bolletta (€)")
+plt.title("Grafico Comparativo: Costo Totale Bolletta (€) per Periodo")
+plt.xticks(rotation=45, ha='right')
+plt.grid(axis='y', linestyle='--', alpha=0.7)
+# Aggiungi etichette dati
+for bar in bars_costo:
+    yval = bar.get_height()
+    plt.text(bar.get_x() + bar.get_width()/2, yval + 3, f'{yval:.2f}€', ha='center', va='bottom', fontsize=9)
+plt.tight_layout()
+plt.show()
+
+# --- Grafico IVA ---
+plt.figure(figsize=(12, 6))
+bars_iva = plt.bar(periods, iva_totale, color='lightgreen')
+plt.xlabel("Periodo di Riferimento")
+plt.ylabel("IVA Totale (€)")
+plt.title("Grafico Comparativo: IVA Totale (€) per Periodo")
+plt.xticks(rotation=45, ha='right')
+plt.grid(axis='y', linestyle='--', alpha=0.7)
+# Aggiungi etichette dati
+for bar in bars_iva:
+    yval = bar.get_height()
+    plt.text(bar.get_x() + bar.get_width()/2, yval + 0.5, f'{yval:.2f}€', ha='center', va='bottom', fontsize=9)
+plt.tight_layout()
+plt.show()
+
+# --- Grafico Consuntivo Combinato ---
+fig, ax1 = plt.subplots(figsize=(14, 7))
+
+bar_width = 0.25
+index = np.arange(len(periods))
+
+# Barre per Costo Totale (Asse Sinistro)
+bars1 = ax1.bar(index - bar_width, costo_totale, bar_width, label='Costo Totale (€)', color='lightcoral')
+# Barre per IVA Totale (Asse Sinistro)
+bars2 = ax1.bar(index, iva_totale, bar_width, label='IVA Totale (€)', color='lightgreen')
+
+ax1.set_xlabel("Periodo di Riferimento")
+ax1.set_ylabel("Importo (€)", color='black')
+ax1.tick_params(axis='y', labelcolor='black')
+ax1.set_xticks(index)
+ax1.set_xticklabels(periods, rotation=45, ha='right')
+ax1.grid(axis='y', linestyle='--', alpha=0.7, which='major')
+
+# Crea secondo asse Y per Consumo (smc)
+ax2 = ax1.twinx()
+# Barre per Consumo (Asse Destro)
+bars3 = ax2.bar(index + bar_width, consumo_smc, bar_width, label='Consumo (smc)', color='skyblue')
+ax2.set_ylabel("Consumo (smc)", color='skyblue')
+ax2.tick_params(axis='y', labelcolor='skyblue')
+# Rimuovi griglia per il secondo asse per non sovrapporla
+ax2.grid(False)
+
+plt.title("Grafico Consuntivo: Consumo (smc), Costo Totale (€) e IVA (€)")
+
+# Aggiungi etichette dati
+def add_labels(bars, axis, currency=True, color='black'):
+    for bar in bars:
+        height = bar.get_height()
+        label = f'{height:.2f}€' if currency else str(int(height))
+        axis.annotate(label,
+                    xy=(bar.get_x() + bar.get_width() / 2, height),
+                    xytext=(0, 3),  # 3 points vertical offset
+                    textcoords="offset points",
+                    ha='center', va='bottom', fontsize=8, color=color)
+
+add_labels(bars1, ax1, currency=True, color='darkred')
+add_labels(bars2, ax1, currency=True, color='darkgreen')
+add_labels(bars3, ax2, currency=False, color='darkblue')
+
+
+# Aggiungi legenda combinata
+lines1, labels1 = ax1.get_legend_handles_labels()
+lines2, labels2 = ax2.get_legend_handles_labels()
+ax2.legend(lines1 + lines2, labels1 + labels2, loc='upper left')
+
+
+fig.tight_layout() # Aggiusta layout per prevenire sovrapposizioni
+plt.show()

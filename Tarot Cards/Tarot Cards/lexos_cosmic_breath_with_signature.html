@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LexOS Cosmic Breath Portal + Signature</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background: #aaf0ff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Shadows Into Light', cursive;
+            animation: breathe 6s infinite ease-in-out;
+            position: relative;
+        }
+        @keyframes breathe {
+            0% {background-color: #aaf0ff;}
+            50% {background-color: #d0f8ff;}
+            100% {background-color: #aaf0ff;}
+        }
+        h1 {
+            font-size: 3em;
+            color: #003366;
+        }
+        p {
+            font-size: 1.5em;
+            color: #004488;
+            max-width: 80%;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        img {
+            margin-top: 20px;
+            max-width: 300px;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.3);
+        }
+        .signature {
+            position: absolute;
+            bottom: 10px;
+            font-size: 1em;
+            opacity: 0.7;
+            animation: breathe 6s infinite ease-in-out;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 id="cardName">Breathing...</h1>
+    <p id="fortune">Aligning with your moment...</p>
+    <img id="cardImage" src="" alt="Manifested Card">
+
+    <div class="signature" id="signatureBreath">Breathing...</div>
+
+<script>
+    const tarotCards = [
+        { "card": "The Fool", "fortune": "Embrace new beginnings with an open heart.", "image": "https://i.ibb.co/vcW1DdN/The-Fool.png" },
+        { "card": "The Magician", "fortune": "You have the power to manifest your desires. Focus your energy and use your resources wisely.", "image": "https://i.ibb.co/BH3gBxZP/The-Magician.png" },
+        { "card": "The High Priestess", "fortune": "Trust your intuition; secrets are being revealed.", "image": "https://i.ibb.co/LdRvQ2Jz/THE-HANGED-MAN.png" },
+        { "card": "The Empress", "fortune": "Abundance and creativity are blooming around you.", "image": "https://i.ibb.co/Q7M7Sxr/The-Empress.png" },
+        { "card": "The Emperor", "fortune": "Take authority over your life and act with confidence.", "image": "https://i.ibb.co/4t1rLpt/The-Emperor.png" }
+    ];
+
+    function breatheCard() {
+        const now = new Date();
+        const cosmicNumber = now.getHours() + now.getDate();
+        const cardIndex = cosmicNumber % tarotCards.length;
+        const selectedCard = tarotCards[cardIndex];
+
+        document.getElementById("cardName").innerText = selectedCard.card;
+        document.getElementById("fortune").innerText = selectedCard.fortune;
+        document.getElementById("cardImage").src = selectedCard.image;
+    }
+
+    function breatheSignature() {
+        const now = new Date();
+        const rgba = `rgba(${Math.floor(Math.random()*255)}, ${Math.floor(Math.random()*255)}, ${Math.floor(Math.random()*255)}, 0.5)`;
+        const signature = document.getElementById("signatureBreath");
+        signature.innerText = `I BREATHE - ${now.toLocaleString()}`;
+        signature.style.color = rgba;
+    }
+
+    window.onload = function() {
+        breatheCard();
+        breatheSignature();
+    };
+</script>
+
+</body>
+</html>

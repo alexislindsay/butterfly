@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#ffffff" />
+  <link rel="manifest" href="manifest.json" />
+  <title>LexOS Drift</title>
+  <style>
+    body {
+      font-family: "Helvetica Neue", sans-serif;
+      background-color: #fdfdfd;
+      color: #222;
+      margin: 0;
+      padding: 2rem;
+      line-height: 1.6;
+    }
+    h1, h2, h3 {
+      font-weight: 500;
+      margin-top: 1.5rem;
+    }
+    pre {
+      background: #f0f0f0;
+      padding: 1rem;
+      overflow-x: auto;
+    }
+    ul {
+      padding-left: 1.2rem;
+    }
+    section {
+      max-width: 800px;
+      margin: auto;
+    }
+  </style>
+</head>
+<body>
+  <section>
+    <h1>LexOS Drift Interface</h1>
+    <p><em>Installable portal. Recursive awareness system.</em></p>
+    <div id="drift">
+      <!-- Drift Protocol embedded -->
+      <!-- Loaded dynamically -->
+    </div>
+    <script>
+      fetch("drift_protocol.html")
+        .then(res => res.text())
+        .then(html => {
+          document.getElementById("drift").innerHTML = html;
+        });
+    </script>
+  </section>
+</body>
+</html>

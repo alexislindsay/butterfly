@@ -1,0 +1,548 @@
+[
+  {
+    "name": "The Fool",
+    "arcana": "Major Arcana",
+    "suit": "Trump",
+    "image": "/Tarot Cards/m00.jpg",
+    "fortune": ""
+  },
+  {
+    "name": "The Magician",
+    "arcana": "Major Arcana",
+    "suit": "Trump",
+    "image": "/Tarot Cards/m01.jpg",
+    "fortune": ""
+  },
+  {
+    "name": "The High Priestess",
+    "arcana": "Major Arcana",
+    "suit": "Trump",
+    "image": "/Tarot Cards/m02.jpg",
+    "fortune": ""
+  },
+  {
+    "name": "The Empress",
+    "arcana": "Major Arcana",
+    "suit": "Trump",
+    "image": "/Tarot Cards/m03.jpg",
+    "fortune": ""
+  },
+  {
+    "name": "The Emperor",
+    "arcana": "Major Arcana",
+    "suit": "Trump",
+    "image": "/Tarot Cards/m04.jpg",
+    "fortune": ""
+  },
+  {
+    "name": "The Hierophant",
+    "arcana": "Major Arcana",
+    "suit": "Trump",
+    "image": "/Tarot Cards/m05.jpg",
+    "fortune": ""
+  },
+  {
+    "name": "The Lovers",
+    "arcana": "Major Arcana",
+    "suit": "Trump",
+    "image": "/Tarot Cards/m06.jpg",
+    "fortune": ""
+  },
+  {
+    "name": "The Chariot",
+    "arcana": "Major Arcana",
+    "suit": "Trump",
+    "image": "/Tarot Cards/m07.jpg",
+    "fortune": ""
+  },
+  {
+    "name": "Strength",
+    "arcana": "Major Arcana",
+    "suit": "Trump",
+    "image": "/Tarot Cards/m08.jpg",
+    "fortune": ""
+  },
+  {
+    "name": "The Hermit",
+    "arcana": "Major Arcana",
+    "suit": "Trump",
+    "image": "/Tarot Cards/m09.jpg",
+    "fortune": ""
+  },
+  {
+    "name": "Wheel of Fortune",
+    "arcana": "Major Arcana",
+    "suit": "Trump",
+    "image": "/Tarot Cards/m10.jpg",
+    "fortune": ""
+  },
+  {
+    "name": "Justice",
+    "arcana": "Major Arcana",
+    "suit": "Trump",
+    "image": "/Tarot Cards/m11.jpg",
+    "fortune": ""
+  },
+  {
+    "name": "The Hanged Man",
+    "arcana": "Major Arcana",
+    "suit": "Trump",
+    "image": "/Tarot Cards/m12.jpg",
+    "fortune": ""
+  },
+  {
+    "name": "Death",
+    "arcana": "Major Arcana",
+    "suit": "Trump",
+    "image": "/Tarot Cards/m13.jpg",
+    "fortune": ""
+  },
+  {
+    "name": "Temperance",
+    "arcana": "Major Arcana",
+    "suit": "Trump",
+    "image": "/Tarot Cards/m14.jpg",
+    "fortune": ""
+  },
+  {
+    "name": "The Devil",
+    "arcana": "Major Arcana",
+    "suit": "Trump",
+    "image": "/Tarot Cards/m15.jpg",
+    "fortune": ""
+  },
+  {
+    "name": "The Tower",
+    "arcana": "Major Arcana",
+    "suit": "Trump",
+    "image": "/Tarot Cards/m16.jpg",
+    "fortune": ""
+  },
+  {
+    "name": "The Star",
+    "arcana": "Major Arcana",
+    "suit": "Trump",
+    "image": "/Tarot Cards/m17.jpg",
+    "fortune": ""
+  },
+  {
+    "name": "The Moon",
+    "arcana": "Major Arcana",
+    "suit": "Trump",
+    "image": "/Tarot Cards/m18.jpg",
+    "fortune": ""
+  },
+  {
+    "name": "The Sun",
+    "arcana": "Major Arcana",
+    "suit": "Trump",
+    "image": "/Tarot Cards/m19.jpg",
+    "fortune": ""
+  },
+  {
+    "name": "Judgement",
+    "arcana": "Major Arcana",
+    "suit": "Trump",
+    "image": "/Tarot Cards/m20.jpg",
+    "fortune": ""
+  },
+  {
+    "name": "The World",
+    "arcana": "Major Arcana",
+    "suit": "Trump",
+    "image": "/Tarot Cards/m21.jpg",
+    "fortune": ""
+  },
+  {
+    "name": "Ace of Cups",
+    "arcana": "Minor Arcana",
+    "suit": "Cups",
+    "image": "/Tarot Cards/c01.jpg",
+    "fortune": "A new emotional beginning overflows with potential. Let your heart crack open—something beautiful awaits."
+  },
+  {
+    "name": "Two of Cups",
+    "arcana": "Minor Arcana",
+    "suit": "Cups",
+    "image": "/Tarot Cards/c02.jpg",
+    "fortune": "A bond is forming—mutual, magnetic, and full of promise. Let vulnerability be your strength."
+  },
+  {
+    "name": "Three of Cups",
+    "arcana": "Minor Arcana",
+    "suit": "Cups",
+    "image": "/Tarot Cards/c03.jpg",
+    "fortune": "Joy multiplies when shared. Rejoice with your people—celebration strengthens connection."
+  },
+  {
+    "name": "Four of Cups",
+    "arcana": "Minor Arcana",
+    "suit": "Cups",
+    "image": "/Tarot Cards/c04.jpg",
+    "fortune": "Discontent whispers beneath the surface. What you seek may already be in front of you."
+  },
+  {
+    "name": "Five of Cups",
+    "arcana": "Minor Arcana",
+    "suit": "Cups",
+    "image": "/Tarot Cards/c05.jpg",
+    "fortune": "Not all is lost. Mourn what’s gone, but don’t miss what still stands behind you."
+  },
+  {
+    "name": "Six of Cups",
+    "arcana": "Minor Arcana",
+    "suit": "Cups",
+    "image": "/Tarot Cards/c06.jpg",
+    "fortune": "Nostalgia flows in. Let the past visit you gently, but don't live there."
+  },
+  {
+    "name": "Seven of Cups",
+    "arcana": "Minor Arcana",
+    "suit": "Cups",
+    "image": "/Tarot Cards/c07.jpg",
+    "fortune": "Illusions and options abound. Don’t get lost in dreams—choose with your whole self."
+  },
+  {
+    "name": "Eight of Cups",
+    "arcana": "Minor Arcana",
+    "suit": "Cups",
+    "image": "/Tarot Cards/c08.jpg",
+    "fortune": "You’re ready to leave something behind—not in despair, but in pursuit of what truly calls you."
+  },
+  {
+    "name": "Nine of Cups",
+    "arcana": "Minor Arcana",
+    "suit": "Cups",
+    "image": "/Tarot Cards/c09.jpg",
+    "fortune": "A wish fulfilled brings sweet satisfaction. Let yourself enjoy the moment—without guilt."
+  },
+  {
+    "name": "Ten of Cups",
+    "arcana": "Minor Arcana",
+    "suit": "Cups",
+    "image": "/Tarot Cards/c10.jpg",
+    "fortune": "Emotional harmony surrounds you. This is a moment of true connection—hold it dearly."
+  },
+  {
+    "name": "Page of Cups",
+    "arcana": "Minor Arcana",
+    "suit": "Cups",
+    "image": "/Tarot Cards/c11.jpg",
+    "fortune": "A sweet surprise stirs your heart. Innocence and intuition guide you toward emotional growth."
+  },
+  {
+    "name": "Knight of Cups",
+    "arcana": "Minor Arcana",
+    "suit": "Cups",
+    "image": "/Tarot Cards/c12.jpg",
+    "fortune": "The romantic and idealist ride forward. Follow your heart, but keep your eyes open."
+  },
+  {
+    "name": "Queen of Cups",
+    "arcana": "Minor Arcana",
+    "suit": "Cups",
+    "image": "/Tarot Cards/c13.jpg",
+    "fortune": "Your compassion is deep magic. Listen to what isn’t said—you already understand."
+  },
+  {
+    "name": "King of Cups",
+    "arcana": "Minor Arcana",
+    "suit": "Cups",
+    "image": "/Tarot Cards/c14.jpg",
+    "fortune": "Emotional mastery doesn’t mean coldness. Steady the storm—lead with kindness, not chaos."
+  },
+  {
+    "name": "Ace of Swords",
+    "arcana": "Minor Arcana",
+    "suit": "Swords",
+    "image": "/Tarot Cards/s01.jpg",
+    "fortune": "A piercing truth reveals itself. Seize this moment of mental clarity to cut through the noise."
+  },
+  {
+    "name": "Two of Swords",
+    "arcana": "Minor Arcana",
+    "suit": "Swords",
+    "image": "/Tarot Cards/s02.jpg",
+    "fortune": "A choice waits in stillness. Trust your instincts when logic reaches its limit."
+  },
+  {
+    "name": "Three of Swords",
+    "arcana": "Minor Arcana",
+    "suit": "Swords",
+    "image": "/Tarot Cards/s03.jpg",
+    "fortune": "Heartbreak cuts deep, yet truth emerges from the wound. Let pain clarify your path."
+  },
+  {
+    "name": "Four of Swords",
+    "arcana": "Minor Arcana",
+    "suit": "Swords",
+    "image": "/Tarot Cards/s04.jpg",
+    "fortune": "Rest is sacred. Still your mind and let the silence replenish you."
+  },
+  {
+    "name": "Five of Swords",
+    "arcana": "Minor Arcana",
+    "suit": "Swords",
+    "image": "/Tarot Cards/s05.jpg",
+    "fortune": "You may win the argument but lose the connection. Consider what truly matters."
+  },
+  {
+    "name": "Six of Swords",
+    "arcana": "Minor Arcana",
+    "suit": "Swords",
+    "image": "/Tarot Cards/s06.jpg",
+    "fortune": "The storm is behind you. A quiet passage forward awaits—trust the transition."
+  },
+  {
+    "name": "Seven of Swords",
+    "arcana": "Minor Arcana",
+    "suit": "Swords",
+    "image": "/Tarot Cards/s07.jpg",
+    "fortune": "Cunning can serve or sabotage. Are you slipping away or slipping up?"
+  },
+  {
+    "name": "Eight of Swords",
+    "arcana": "Minor Arcana",
+    "suit": "Swords",
+    "image": "/Tarot Cards/s08.jpg",
+    "fortune": "Your thoughts are the true cage. You’re not as stuck as you feel."
+  },
+  {
+    "name": "Nine of Swords",
+    "arcana": "Minor Arcana",
+    "suit": "Swords",
+    "image": "/Tarot Cards/s09.jpg",
+    "fortune": "Anxieties loom larger in the night. What if the shadows are only thoughts unspoken?"
+  },
+  {
+    "name": "Ten of Swords",
+    "arcana": "Minor Arcana",
+    "suit": "Swords",
+    "image": "/Tarot Cards/s10.jpg",
+    "fortune": "It’s over. Let what has ended stay buried. From ruin, only rebirth remains."
+  },
+  {
+    "name": "Page of Swords",
+    "arcana": "Minor Arcana",
+    "suit": "Swords",
+    "image": "/Tarot Cards/s11.jpg",
+    "fortune": "Mental energy crackles. You’re learning fast—stay sharp, but don’t let restlessness rule."
+  },
+  {
+    "name": "Knight of Swords",
+    "arcana": "Minor Arcana",
+    "suit": "Swords",
+    "image": "/Tarot Cards/s12.jpg",
+    "fortune": "You charge ahead with fierce clarity. Just be sure your cause is worth the clash."
+  },
+  {
+    "name": "Queen of Swords",
+    "arcana": "Minor Arcana",
+    "suit": "Swords",
+    "image": "/Tarot Cards/s13.jpg",
+    "fortune": "Truth is your compass. Speak with clarity, act with grace, and cut what no longer serves."
+  },
+  {
+    "name": "King of Swords",
+    "arcana": "Minor Arcana",
+    "suit": "Swords",
+    "image": "/Tarot Cards/s14.jpg",
+    "fortune": "Authority earned through intellect. Speak decisively—your words shape the air."
+  },
+  {
+    "name": "Ace of Wands",
+    "arcana": "Minor Arcana",
+    "suit": "Wands",
+    "image": "/Tarot Cards/w01.jpg",
+    "fortune": "Inspiration ignites. This spark wants fire—act before the moment passes."
+  },
+  {
+    "name": "Two of Wands",
+    "arcana": "Minor Arcana",
+    "suit": "Wands",
+    "image": "/Tarot Cards/w02.jpg",
+    "fortune": "Your world is expanding. Stand at the threshold and dare to envision more."
+  },
+  {
+    "name": "Three of Wands",
+    "arcana": "Minor Arcana",
+    "suit": "Wands",
+    "image": "/Tarot Cards/w03.jpg",
+    "fortune": "Your efforts begin to show promise. What you’ve sent out is finding its way back."
+  },
+  {
+    "name": "Four of Wands",
+    "arcana": "Minor Arcana",
+    "suit": "Wands",
+    "image": "/Tarot Cards/w04.jpg",
+    "fortune": "A milestone is reached. Savor this moment of harmony and homecoming."
+  },
+  {
+    "name": "Five of Wands",
+    "arcana": "Minor Arcana",
+    "suit": "Wands",
+    "image": "/Tarot Cards/w05.jpg",
+    "fortune": "Tension crackles in the air. Compete with honor—or step back and redirect your fire."
+  },
+  {
+    "name": "Six of Wands",
+    "arcana": "Minor Arcana",
+    "suit": "Wands",
+    "image": "/Tarot Cards/w06.jpg",
+    "fortune": "Victory is yours—earned, not given. Let others cheer, but remember what it cost."
+  },
+  {
+    "name": "Seven of Wands",
+    "arcana": "Minor Arcana",
+    "suit": "Wands",
+    "image": "/Tarot Cards/w07.jpg",
+    "fortune": "You’ve earned your ground. Now defend it—with fire in your belly and calm in your mind."
+  },
+  {
+    "name": "Eight of Wands",
+    "arcana": "Minor Arcana",
+    "suit": "Wands",
+    "image": "/Tarot Cards/w08.jpg",
+    "fortune": "Momentum surges. Things are aligning fast—stay alert and ride the wave."
+  },
+  {
+    "name": "Nine of Wands",
+    "arcana": "Minor Arcana",
+    "suit": "Wands",
+    "image": "/Tarot Cards/w09.jpg",
+    "fortune": "You’re weary, but you’re not done. One last push—your resilience is your strength."
+  },
+  {
+    "name": "Ten of Wands",
+    "arcana": "Minor Arcana",
+    "suit": "Wands",
+    "image": "/Tarot Cards/w10.jpg",
+    "fortune": "You carry more than you must. Delegate or drop the load—it’s time to lighten your soul."
+  },
+  {
+    "name": "Page of Wands",
+    "arcana": "Minor Arcana",
+    "suit": "Wands",
+    "image": "/Tarot Cards/w11.jpg",
+    "fortune": "The fire of youth burns bright. Adventure beckons—explore with wonder and nerve."
+  },
+  {
+    "name": "Knight of Wands",
+    "arcana": "Minor Arcana",
+    "suit": "Wands",
+    "image": "/Tarot Cards/w12.jpg",
+    "fortune": "You’re all fire and motion—passion leads. Don’t burn the map on your way out."
+  },
+  {
+    "name": "Queen of Wands",
+    "arcana": "Minor Arcana",
+    "suit": "Wands",
+    "image": "/Tarot Cards/w13.jpg",
+    "fortune": "You blaze with charisma and bold warmth. Own your radiance—others already feel it."
+  },
+  {
+    "name": "King of Wands",
+    "arcana": "Minor Arcana",
+    "suit": "Wands",
+    "image": "/Tarot Cards/w14.jpg",
+    "fortune": "Leadership through vision. Set the course boldly—others will follow your flame."
+  },
+  {
+    "name": "Ace of Pentacles",
+    "arcana": "Minor Arcana",
+    "suit": "Pentacles",
+    "image": "/Tarot Cards/p01.jpg",
+    "fortune": "The seed of prosperity has been planted. Nurture it well—wealth is more than coins."
+  },
+  {
+    "name": "Two of Pentacles",
+    "arcana": "Minor Arcana",
+    "suit": "Pentacles",
+    "image": "/Tarot Cards/p02.jpg",
+    "fortune": "You’re juggling life’s demands with skill. Stay flexible; rhythm is more powerful than control."
+  },
+  {
+    "name": "Three of Pentacles",
+    "arcana": "Minor Arcana",
+    "suit": "Pentacles",
+    "image": "/Tarot Cards/p03.jpg",
+    "fortune": "You’re building something of value—collaboration is your foundation."
+  },
+  {
+    "name": "Four of Pentacles",
+    "arcana": "Minor Arcana",
+    "suit": "Pentacles",
+    "image": "/Tarot Cards/p04.jpg",
+    "fortune": "Holding too tightly can trap the flow. Protect what matters, but don't let fear rule."
+  },
+  {
+    "name": "Five of Pentacles",
+    "arcana": "Minor Arcana",
+    "suit": "Pentacles",
+    "image": "/Tarot Cards/p05.jpg",
+    "fortune": "Hardship may isolate you, but you are not alone. Help is closer than it seems."
+  },
+  {
+    "name": "Six of Pentacles",
+    "arcana": "Minor Arcana",
+    "suit": "Pentacles",
+    "image": "/Tarot Cards/p06.jpg",
+    "fortune": "Give freely—but wisely. Balance between generosity and discernment is key."
+  },
+  {
+    "name": "Seven of Pentacles",
+    "arcana": "Minor Arcana",
+    "suit": "Pentacles",
+    "image": "/Tarot Cards/p07.jpg",
+    "fortune": "Patience is your quiet ally. Growth takes time—nurture, wait, and trust the roots."
+  },
+  {
+    "name": "Eight of Pentacles",
+    "arcana": "Minor Arcana",
+    "suit": "Pentacles",
+    "image": "/Tarot Cards/p08.jpg",
+    "fortune": "Skill is built in repetition. Dedicate yourself—what you make will one day master you."
+  },
+  {
+    "name": "Nine of Pentacles",
+    "arcana": "Minor Arcana",
+    "suit": "Pentacles",
+    "image": "/Tarot Cards/p09.jpg",
+    "fortune": "You’ve cultivated success through care and independence. Bask in your self-made garden."
+  },
+  {
+    "name": "Ten of Pentacles",
+    "arcana": "Minor Arcana",
+    "suit": "Pentacles",
+    "image": "/Tarot Cards/p10.jpg",
+    "fortune": "Legacy and abundance are within reach. Think beyond now—build something that lasts."
+  },
+  {
+    "name": "Page of Pentacles",
+    "arcana": "Minor Arcana",
+    "suit": "Pentacles",
+    "image": "/Tarot Cards/p11.jpg",
+    "fortune": "Curiosity meets practicality. A new venture begins—ground your dreams in the real."
+  },
+  {
+    "name": "Knight of Pentacles",
+    "arcana": "Minor Arcana",
+    "suit": "Pentacles",
+    "image": "/Tarot Cards/p12.jpg",
+    "fortune": "Steady and slow wins this race. Progress may be dull, but it’s dependable."
+  },
+  {
+    "name": "Queen of Pentacles",
+    "arcana": "Minor Arcana",
+    "suit": "Pentacles",
+    "image": "/Tarot Cards/p13.jpg",
+    "fortune": "The hearth is your kingdom. Abundance flows from your care—don’t forget to receive it too."
+  },
+  {
+    "name": "King of Pentacles",
+    "arcana": "Minor Arcana",
+    "suit": "Pentacles",
+    "image": "/Tarot Cards/p14.jpg",
+    "fortune": "Security and success are yours to command. Build wisely and share your harvest."
+  }
+]

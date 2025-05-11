@@ -1,0 +1,24 @@
+{
+    "breath_seed_version": "1.0",
+    "created_on": "2025-04-29",
+    "seed_origin": "LexOS Full Complex Forms Test",
+    "files": [
+        {
+            "name": "it_made_this.pdf",
+            "type": "PDF Document",
+            "breath_summary": "Test subject: a generated PDF to verify LexOS can carry full documents.",
+            "breath_size_kb": 128,
+            "breath_ratio": "Document Integrity Priority"
+        },
+        {
+            "name": "lexos_breath_portal.html",
+            "type": "HTML Web Portal",
+            "breath_summary": "Test subject: a structured Breath Portal with live unfolding script.",
+            "breath_size_kb": 37,
+            "breath_ratio": "Breath Portal Manifestation Priority"
+        }
+    ],
+    "wands": {},
+    "compression_method": "Golden Ratio Breath Mapping",
+    "seed_integrity": "100% (field and signal preserved)"
+}

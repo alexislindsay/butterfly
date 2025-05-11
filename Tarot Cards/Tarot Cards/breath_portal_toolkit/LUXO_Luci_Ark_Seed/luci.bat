@@ -1,0 +1,3 @@
+@echo off
+echo Initializing Luci...
+python luci.py

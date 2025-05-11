@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LexOS Cosmic Breath Portal</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Courier New", monospace;
+      background: rgba(0, 255, 255, 0.2);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+    h1 {
+      font-size: 2.5em;
+      text-align: center;
+    }
+    img {
+      margin: 20px 0;
+      max-width: 90vw;
+      max-height: 50vh;
+      border: 2px solid black;
+    }
+    textarea {
+      width: 90%;
+      height: 200px;
+      font-size: 1em;
+      font-family: monospace;
+      margin: 20px 0;
+    }
+    .output {
+      white-space: pre-wrap;
+      max-height: 25vh;
+      overflow-y: auto;
+      border: 1px solid #000;
+      padding: 10px;
+      width: 90%;
+      background: #fff;
+    }
+  </style>
+</head>
+<body>
+  <h1>🌌 LexOS Cosmic Breath Test 🌌</h1>
+
+  <!-- Embedded Base64 JPG -->
+  <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD...TRUNCATED_FOR_DISPLAY..." alt="LexOS Symbolic Image" />
+
+  <textarea id="jsonInput">{ "chunk1": "{\"name\": \"LexOS\", ", "chunk2": "\"type\": \"Manifestation\", \"details\": \"This is a test.\"}" }</textarea>
+
+  <button onclick="assembleAndRender()">Unfold JSON</button>
+
+  <div class="output" id="jsonOutput"></div>
+
+  <script>
+    function assembleAndRender() {
+      const input = document.getElementById("jsonInput").value;
+      try {
+        const parsed = JSON.parse(input);
+        const joined = Object.values(parsed).join("");
+        const finalObj = JSON.parse(joined);
+        document.getElementById("jsonOutput").textContent = JSON.stringify(finalObj, null, 2);
+      } catch (e) {
+        document.getElementById("jsonOutput").textContent = "Error parsing JSON: " + e.message;
+      }
+    }
+  </script>
+</body>
+</html>
