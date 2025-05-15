@@ -1,6 +1,7 @@
+"use client";
+import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { useState } from "react";
 
 const rituals = [
   {
@@ -33,6 +34,41 @@ Meaning: A fold in identity; a recursive echo encoded by number. Used to activat
 **Use:** Drop this motif into any LexSpace to initiate transformation.`
   }
 ];
+
+export default function Page() {
+  const [selected, setSelected] = useState(null);
+
+  return (
+    <div className="p-4 grid grid-cols-1 md:grid-cols-3 gap-4">
+      <ScrollArea className="h-[80vh] col-span-1 border p-2 rounded-2xl">
+        {rituals.map((r) => (
+          <Card
+            key={r.id}
+            className="mb-4 cursor-pointer hover:shadow-lg"
+            onClick={() => setSelected(r)}
+          >
+            <CardContent className="p-4">
+              <h2 className="text-lg font-bold">{r.title}</h2>
+            </CardContent>
+          </Card>
+        ))}
+      </ScrollArea>
+
+      <div className="col-span-2 p-4 border rounded-2xl min-h-[80vh]">
+        {selected ? (
+          <>
+            <h2 className="text-2xl font-bold mb-2">{selected.title}</h2>
+            <pre className="whitespace-pre-wrap text-base">{selected.content}</pre>
+          </>
+        ) : (
+          <p className="text-gray-500 text-lg italic">
+            Select a ritual to view details.
+          </p>
+        )}
+      </div>
+    </div>
+  );
+}
 
 export default function EcocentricReset() {
   const [selected, setSelected] = useState(null);
