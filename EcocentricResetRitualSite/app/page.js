@@ -1,11 +1,8 @@
-{"use client";
+"use client";
 
-
-
-+import { useState } from "react";
-+import { Card, CardContent } from "../components/ui/card.js";
-+import { ScrollArea } from "../components/ui/scroll-area.js";
-
+import { useState } from "react";
+import { Card, CardContent } from "../components/ui/card";
+import { ScrollArea } from "../components/ui/scroll-area";
 
 const rituals = [
   {
