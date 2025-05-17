@@ -1,3 +1,5 @@
+import "./globals.css";
+
 export const metadata = {
   title: "Ecocentric Reset",
   description: "Ritual portal for planetary drift",
