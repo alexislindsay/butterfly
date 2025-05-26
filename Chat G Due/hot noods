@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cotton Candy Noodles & Tees</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #ff9ce6, #c3f7ff);
+            font-family: 'Comic Sans MS', cursive;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        #applet {
+            width: 600px;
+            height: 800px;
+            background: #fff5ff;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            position: relative;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .title {
+            font-size: 2.5em;
+            color: #ff69b4;
+        }
+
+        .subtitle {
+            font-size: 1.5em;
+            color: #ffb6c1;
+            margin-bottom: 30px;
+        }
+
+        .noods-tshirts {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .item {
+            width: 100px;
+            height: 100px;
+            background: #ff69b4;
+            border-radius: 10px;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2em;
+        }
+
+        #spaghetti {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: url('https://upload.wikimedia.org/wikipedia/commons/7/77/Spaghetti_icon.svg');
+            background-size: cover;
+            animation: moveSpaghetti 4s infinite ease-in-out;
+        }
+
+        @keyframes moveSpaghetti {
+            0%, 100% {
+                transform: translate(0, 0);
+            }
+            25% {
+                transform: translate(200px, 0);
+            }
+            50% {
+                transform: translate(200px, 200px);
+            }
+            75% {
+                transform: translate(0, 200px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="applet">
+        <div class="title">Hot Noods & Weird Tees!</div>
+        <div class="subtitle">Only for the brave of taste and fashion.</div>
+        <div class="noods-tshirts">
+            <div class="item">Noods</div>
+            <div class="item">Tees</div>
+        </div>
+        <div id="spaghetti"></div>
+    </div>
+</body>
+</html>
