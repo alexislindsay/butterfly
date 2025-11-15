@@ -10,7 +10,7 @@ export default function Home() {
         if (!res.ok) throw new Error("Failed to load JSON");
         return res.json();
       })
-      .then((data) => setCards(data))
+      .then((data) => setCards(data.cards))
       .catch((err) => setError(err.message));
   }, []);
 
