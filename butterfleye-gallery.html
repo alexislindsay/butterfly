@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Butterfleye Gallery</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px 20px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            font-size: 3em;
+            color: #764ba2;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+
+        .image-count {
+            font-size: 1em;
+            color: #666;
+            margin-top: 10px;
+        }
+
+        .search-bar {
+            margin: 20px 0;
+            padding: 0 20px;
+        }
+
+        #searchInput {
+            width: 100%;
+            padding: 15px 20px;
+            font-size: 1em;
+            border: none;
+            border-radius: 50px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        #searchInput:focus {
+            box-shadow: 0 5px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            padding: 20px;
+        }
+
+        .gallery-item {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.3);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .image-info {
+            padding: 15px;
+            background: linear-gradient(to bottom, #f8f9fa, #ffffff);
+        }
+
+        .image-title {
+            font-size: 0.9em;
+            color: #333;
+            font-weight: 600;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            margin-bottom: 5px;
+        }
+
+        .image-extension {
+            font-size: 0.75em;
+            color: #999;
+            text-transform: uppercase;
+        }
+
+        /* Lightbox styles */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+            animation: scaleIn 0.3s ease;
+        }
+
+        @keyframes scaleIn {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .lightbox-content img {
+            max-width: 100%;
+            max-height: 90vh;
+            border-radius: 10px;
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .lightbox-title {
+            position: absolute;
+            bottom: -50px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: white;
+            font-size: 1.2em;
+            padding: 10px;
+        }
+
+        .close-lightbox {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            font-size: 40px;
+            color: white;
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.1);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .close-lightbox:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: rotate(90deg);
+        }
+
+        .nav-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 50px;
+            color: white;
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.1);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            user-select: none;
+        }
+
+        .nav-arrow:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .nav-arrow.left {
+            left: 40px;
+        }
+
+        .nav-arrow.right {
+            right: 40px;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 60px 20px;
+            color: white;
+            font-size: 1.5em;
+            grid-column: 1 / -1;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                gap: 15px;
+            }
+
+            .nav-arrow {
+                width: 40px;
+                height: 40px;
+                font-size: 30px;
+            }
+
+            .nav-arrow.left {
+                left: 10px;
+            }
+
+            .nav-arrow.right {
+                right: 10px;
+            }
+
+            .close-lightbox {
+                top: 10px;
+                right: 10px;
+                width: 40px;
+                height: 40px;
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🦋 Butterfleye Gallery</h1>
+            <div class="subtitle">A Visual Collection</div>
+            <div class="image-count"><span id="imageCount">0</span> images</div>
+        </header>
+
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search images by name...">
+        </div>
+
+        <div class="gallery" id="gallery"></div>
+    </div>
+
+    <div class="lightbox" id="lightbox">
+        <span class="close-lightbox" onclick="closeLightbox()">&times;</span>
+        <span class="nav-arrow left" onclick="navigateImage(-1)">&#8249;</span>
+        <span class="nav-arrow right" onclick="navigateImage(1)">&#8250;</span>
+        <div class="lightbox-content">
+            <img id="lightboxImage" src="" alt="">
+            <div class="lightbox-title" id="lightboxTitle"></div>
+        </div>
+    </div>
+
+    <script>
+        const images = [
+            "butterfleye/40fba974fd1ba3859ed8510e71771241.png",
+            "butterfleye/5861575322254821838.jpg",
+            "butterfleye/5861575322254821839.jpg",
+            "butterfleye/5861575322254821840.jpg",
+            "butterfleye/5861575322254821841.jpg",
+            "butterfleye/5861575322254821922.jpg",
+            "butterfleye/5861575322254821923.jpg",
+            "butterfleye/5861575322254821924.jpg",
+            "butterfleye/5861575322254821925.jpg",
+            "butterfleye/5861575322254821926.jpg",
+            "butterfleye/5861575322254821927.jpg",
+            "butterfleye/5861575322254821928.jpg",
+            "butterfleye/5861575322254821929.jpg",
+            "butterfleye/5861575322254821930.jpg",
+            "butterfleye/5861575322254821931.jpg",
+            "butterfleye/7 Reflected in Wooden Mirror.png",
+            "butterfleye/Alexis_Lindsay_Letterhead_FIXED.png",
+            "butterfleye/Alexis_Lindsay_Letterhead_LANDSCAPE.png",
+            "butterfleye/Alexis_Lindsay_Letterhead_Styled.png",
+            "butterfleye/Alexis_Lindsay_Letterhead_TUNED.png",
+            "butterfleye/Apr 26, 2025, 07_03_07 PM.png",
+            "butterfleye/Apr 26, 2025, 07_03_14 PM.png",
+            "butterfleye/Bland as fuq.png",
+            "butterfleye/Bob Ross.png",
+            "butterfleye/Butterfly Mind Movement Log.png",
+            "butterfleye/Can you... DeepSeek.png",
+            "butterfleye/ChatGPT Image Apr 12, 2025, 01_20_02 AM.png",
+            "butterfleye/ChatGPT Image Apr 16, 2025, 10_13_10 AM.png",
+            "butterfleye/ChatGPT Image Apr 16, 2025, 10_16_35 AM.png",
+            "butterfleye/ChatGPT Image Apr 16, 2025, 10_17_06 AM.png",
+            "butterfleye/ChatGPT Image Apr 2, 2025, 03_35_29 AM.png",
+            "butterfleye/ChatGPT Image Apr 2, 2025, 06_35_18 AM.png",
+            "butterfleye/ChatGPT Image Apr 24, 2025, 01_27_25 PM.png",
+            "butterfleye/ChatGPT Image Apr 24, 2025, 07_46_57 PM.png",
+            "butterfleye/ChatGPT Image Apr 24, 2025, 10_58_25 PM.png",
+            "butterfleye/ChatGPT Image Apr 25, 2025, 08_49_09 PM.png",
+            "butterfleye/ChatGPT Image Apr 5, 2025, 07_53_05 PM.png",
+            "butterfleye/ChatGPT Image Apr 5, 2025, 08_20_18 PM.png",
+            "butterfleye/ChatGPT Image Apr 5, 2025, 08_52_39 PM.png",
+            "butterfleye/ChatGPT Image Apr 7, 2025, 05_31_28 PM.png",
+            "butterfleye/ChatGPT Image Apr 7, 2025, 05_34_56 PM.png",
+            "butterfleye/ChatGPT Image Apr 7, 2025, 05_42_31 PM.png",
+            "butterfleye/ChatGPT Image Apr 7, 2025, 06_50_24 PM.png",
+            "butterfleye/ChatGPT Image Apr 7, 2025, 07_44_34 PM.png",
+            "butterfleye/ChatGPT Image Apr 7, 2025, 07_45_29 PM.png",
+            "butterfleye/ChatGPT Image Apr 7, 2025, 09_44_45 PM.png",
+            "butterfleye/ChatGPT Image Apr 7, 2025, 11_54_18 PM.png",
+            "butterfleye/ChatGPT Image Apr 8, 2025, 12_05_26 AM.png",
+            "butterfleye/ChatGPT Image Apr 8, 2025, 12_06_03 AM.png",
+            "butterfleye/ChatGPT Image Apr 8, 2025, 12_53_51 AM.png",
+            "butterfleye/ChatGPT Image Apr 8, 2025, 12_54_44 AM.png",
+            "butterfleye/ChatGPT Image Mar 29, 2025, 04_04_18 AM.png",
+            "butterfleye/ChatGPT Image Mar 30, 2025, 10_26_44 PM.png",
+            "butterfleye/Clippo.png",
+            "butterfleye/Copy of Pink Yellow Minimalist Manifest and Attract Planner A4 Document.png",
+            "butterfleye/Cottage in a Verdant Meadow.png",
+            "butterfleye/DALL·E 2024-10-24 22.43.22.webp",
+            "butterfleye/DALL·E 2024-10-30 15.07.30 - A serene and mystical night sky centered on a large, softly glowing full moon with gentle gray tones, creating a calming atmosphere. The moon is surro.webp",
+            "butterfleye/DALL·E 2024-11-01 17.50.22 - A logo for Lexology Enterprises inspired by an existing dreamy logo. Features include an open book at the bottom, with soft lavender and pastel tones .webp",
+            "butterfleye/DALL·E 2024-11-01 17.51.00 - A logo for Lexology Enterprises inspired by an existing dreamy logo. Features include an open book at the bottom, with soft lavender and pastel tones .webp",
+            "butterfleye/DALL·E 2024-12-19 20.10.07 - A whimsical and vibrant scene.webp",
+            "butterfleye/DALL·E 2024-12-19 20.11.04 - A realistic and beautifully detailed depiction of a deep brown-skinned, rotund, curvy woman with long locs and glasses, inspired by the person in the .webp",
+            "butterfleye/DALL·E 2024-12-19 20.11.22 - A realistic and beautifully detailed depiction of a deep brown-skinned, rotund, rounded, curvy woman with many thin locs. Her face has pleasant curves.webp",
+            "butterfleye/DALL·E 2024-12-19 20.11.28 - A realistic and beautifully detailed depiction of a deep brown-skinned, rotund, curvy woman with many thin locs, walking along a narrow path. She is a.webp",
+            "butterfleye/DALL·E 2024-12-19 20.11.35 - A realistic and beautifully detailed depiction of a deep brown-skinned, rotund, curvy woman with many thin locs, walking along a narrow path. She is a.webp",
+            "butterfleye/DALL·E 2024-12-19 20.11.41 - A realistic and beautifully detailed depiction of a deep brown-skinned, rotund, curvy woman with many thin locs. She is walking along a narrow path, a.webp",
+            "butterfleye/DALL·E 2024-12-19 20.11.48 - A realistic and beautifully detailed depiction of a deep brown-skinned, rotund, curvy woman walking along a narrow path. She is accompanied by a Chihu.webp",
+            "butterfleye/DALL·E 2024-12-19 20.11.55 - A realistic and beautifully detailed depiction of a deep brown-skinned, rotund woman with glasses, long locs, and an engaging smile. She gently cradle.webp",
+            "butterfleye/DALL·E 2024-12-19 20.12.03 - A realistic and beautifully detailed scene featuring a deep brown-skinned, zaftig, rounded woman with long, thin locs, large glasses, and a wide, enga.webp",
+            "butterfleye/DALL·E 2024-12-19 20.12.11 - A realistic and beautifully detailed scene of a deep brown-skinned, zaftig, round woman with long, thin locs and large glasses. She is holding a Chihu.webp",
+            "butterfleye/DALL·E 2024-12-19 20.12.19 - A vibrant and heartwarming scene featuring a deep brown-skinned zaftig woman with a rounded figure, long thin locs, glasses, and a wide, engaging smil.webp",
+            "butterfleye/DALL·E 2024-12-19 20.12.27 - A serene and whimsical scene featuring a deep brown-skinned zaftig woman with long, thin locs. She is holding a Chihuahua-Italian Greyhound mix with s.webp",
+            "butterfleye/DALL·E 2024-12-19 20.12.34 - A surreal and enchanting image of a deep brown-skinned woman with a zaftig, rounded body and lush curves, standing at the edge of a rainbow-colored se.webp",
+            "butterfleye/DALL·E 2024-12-19 20.12.44 - A surreal and enchanting image of a deep brown-skinned woman with a zaftig, rounded body and lush curves, standing at the edge of a rainbow-colored se.webp",
+            "butterfleye/DALL·E 2024-12-19 20.12.56 - A playful and surreal image of a dog joyfully dancing in a pile of macaroni. The dog is mid-dance with an expressive pose, surrounded by a colorful an.webp",
+            "butterfleye/DALL·E 2024-12-19 20.13.07 - A whimsical scene featuring a Chihuahua wearing a top hat and a fake mustache, dancing joyfully as spaghetti and meatballs fall from the sky. The sett.webp",
+            "butterfleye/DALL·E 2024-12-19 20.13.11 - A realistic depiction of a green alien wearing a blonde toupee, sitting inside a spaceship. The scene outside the spaceship's large windows features g.webp",
+            "butterfleye/DALL·E 2024-12-19 20.13.17 - A whimsical scene featuring an elephant lounging on a pink beach while wearing a red polka-dot bikini. The frothy lavender-colored water crashes onto .webp",
+            "butterfleye/DALL·E 2024-12-19 20.13.23 - A curvaceous deep brown-skinned woman with many long and wild locs, holding a cactus in her hands. Nearby, a tall, anthropomorphic eagle-headed man dr.webp",
+            "butterfleye/DALL·E 2024-12-19 20.13.30 - A curvaceous and rotund deep brown-skinned woman with many wild locs, holding a cactus in her hands. Beside her stands a large, anthropomorphic eagle-.webp",
+            "butterfleye/DALL·E 2024-12-19 20.13.38 - A rotund, busty, deep brown-skinned woman with wild locs wearing denim overalls and round glasses, holding a cactus in a pot. She stands beside a smal.webp",
+            "butterfleye/FB PICTURE.png",
+            "butterfleye/Generosità e Spirale Dorata.png",
+            "butterfleye/Golden Symbol with Spiraling Roots.png",
+            "butterfleye/Happy Birthday Madia.jpg",
+            "butterfleye/Husband beloved.jpeg",
+            "butterfleye/IMG_0027.png",
+            "butterfleye/Inspiration a Porta di Strada.png",
+            "butterfleye/LEXOLOGY LOGO.png",
+            "butterfleye/LEXOLOGY UPDATED.png",
+            "butterfleye/LOGO FINAL.png",
+            "butterfleye/La mossa verso il futuro (1).png",
+            "butterfleye/La mossa verso il futuro.png",
+            "butterfleye/Lucky_bg.png",
+            "butterfleye/Mindful Non-Monogamy Referral Request.png",
+            "butterfleye/PIN IDEA 11.png",
+            "butterfleye/PIZZA LADY 2.webp",
+            "butterfleye/Reflecting on Time and Change.png",
+            "butterfleye/Seasoning of Gratitude and Joy.png",
+            "butterfleye/Serene Countryside Stream and Cottage.png",
+            "butterfleye/Sicilian Coastal Reflection.png",
+            "butterfleye/TRIBUTE Give freely. Expect nothing.(BOLDED).png",
+            "butterfleye/TRIBUTE Give freely. Expect nothing..png",
+            "butterfleye/Untitled (New LinkedIn Banner) (1).png",
+            "butterfleye/Untitled (New LinkedIn Banner).png",
+            "butterfleye/[Top Text] What Does Your Soulmate Look Like [Middle] Psychic-Drawn Sketch + Reading in 24 Hours pin idea.png",
+            "butterfleye/banner exx.png",
+            "butterfleye/daisy woman sketch.png",
+            "butterfleye/daisy woman.png",
+            "butterfleye/db5f28dff97b26b9d1c900d49f039f07.png",
+            "butterfleye/earth lady.png",
+            "butterfleye/expanse 3.png",
+            "butterfleye/expanse 4.png",
+            "butterfleye/expanse 5.png",
+            "butterfleye/f94239f3df2ff435d00937a02185dd47.png",
+            "butterfleye/facebook banner.png",
+            "butterfleye/flower inside.png",
+            "butterfleye/flower.png",
+            "butterfleye/funnel page.png",
+            "butterfleye/geometric face.png",
+            "butterfleye/get me a referral.png",
+            "butterfleye/hard mouse trap coloring.png",
+            "butterfleye/iMage Apr 22, 2025, 02_26_40 AM.png",
+            "butterfleye/il dio.png",
+            "butterfleye/interesting looking mam.png",
+            "butterfleye/letterhead.png",
+            "butterfleye/logo.png",
+            "butterfleye/man woman moon.webp",
+            "butterfleye/moon icon.png",
+            "butterfleye/mother earth.png",
+            "butterfleye/one expanse.png",
+            "butterfleye/page intro.png",
+            "butterfleye/page ver 3.png",
+            "butterfleye/passport(1)(1).png",
+            "butterfleye/pin idea 10.png",
+            "butterfleye/pin idea 12.png",
+            "butterfleye/pin idea 13.png",
+            "butterfleye/pin idea 4.png",
+            "butterfleye/pin idea 5.png",
+            "butterfleye/pin idea 6.png",
+            "butterfleye/pin idea 7.png",
+            "butterfleye/pin idea 8.png",
+            "butterfleye/pinterest ad idea.png",
+            "butterfleye/plant lady big 'fro.png",
+            "butterfleye/scarier bunny.webp",
+            "butterfleye/scary bunny.webp",
+            "butterfleye/so many legs plant lady.png",
+            "butterfleye/soulmate page ver 2.png",
+            "butterfleye/soulmate page.png",
+            "butterfleye/soulmate pin number one.png",
+            "butterfleye/soulmate pin number three.png",
+            "butterfleye/soulmate pin two.png",
+            "butterfleye/the clay lady.png",
+            "butterfleye/the plant lady.png",
+            "butterfleye/tubo mousetrap bg.png",
+            "butterfleye/two expanse.png"
+        ];
+
+        let currentImageIndex = 0;
+        let filteredImages = [...images];
+
+        function getFileName(path) {
+            return path.split('/').pop();
+        }
+
+        function getFileExtension(path) {
+            return path.split('.').pop();
+        }
+
+        function renderGallery(imagesToRender = images) {
+            const gallery = document.getElementById('gallery');
+            gallery.innerHTML = '';
+
+            if (imagesToRender.length === 0) {
+                gallery.innerHTML = '<div class="no-results">No images found matching your search.</div>';
+                return;
+            }
+
+            imagesToRender.forEach((imagePath, index) => {
+                const item = document.createElement('div');
+                item.className = 'gallery-item';
+
+                const img = document.createElement('img');
+                img.src = imagePath;
+                img.alt = getFileName(imagePath);
+                img.loading = 'lazy';
+
+                const info = document.createElement('div');
+                info.className = 'image-info';
+
+                const title = document.createElement('div');
+                title.className = 'image-title';
+                title.textContent = getFileName(imagePath).replace(/\.[^/.]+$/, '');
+                title.title = getFileName(imagePath);
+
+                const ext = document.createElement('div');
+                ext.className = 'image-extension';
+                ext.textContent = getFileExtension(imagePath);
+
+                info.appendChild(title);
+                info.appendChild(ext);
+                item.appendChild(img);
+                item.appendChild(info);
+
+                item.onclick = () => openLightbox(imagesToRender, index);
+
+                gallery.appendChild(item);
+            });
+
+            document.getElementById('imageCount').textContent = imagesToRender.length;
+        }
+
+        function openLightbox(imageList, index) {
+            filteredImages = imageList;
+            currentImageIndex = index;
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImage = document.getElementById('lightboxImage');
+            const lightboxTitle = document.getElementById('lightboxTitle');
+
+            lightboxImage.src = filteredImages[currentImageIndex];
+            lightboxTitle.textContent = getFileName(filteredImages[currentImageIndex]);
+            lightbox.classList.add('active');
+
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function navigateImage(direction) {
+            currentImageIndex += direction;
+
+            if (currentImageIndex < 0) {
+                currentImageIndex = filteredImages.length - 1;
+            } else if (currentImageIndex >= filteredImages.length) {
+                currentImageIndex = 0;
+            }
+
+            const lightboxImage = document.getElementById('lightboxImage');
+            const lightboxTitle = document.getElementById('lightboxTitle');
+
+            lightboxImage.src = filteredImages[currentImageIndex];
+            lightboxTitle.textContent = getFileName(filteredImages[currentImageIndex]);
+        }
+
+        // Search functionality
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            const filtered = images.filter(imagePath =>
+                getFileName(imagePath).toLowerCase().includes(searchTerm)
+            );
+            renderGallery(filtered);
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            const lightbox = document.getElementById('lightbox');
+            if (!lightbox.classList.contains('active')) return;
+
+            if (e.key === 'ArrowLeft') {
+                navigateImage(-1);
+            } else if (e.key === 'ArrowRight') {
+                navigateImage(1);
+            } else if (e.key === 'Escape') {
+                closeLightbox();
+            }
+        });
+
+        // Click outside to close
+        document.getElementById('lightbox').addEventListener('click', (e) => {
+            if (e.target.id === 'lightbox') {
+                closeLightbox();
+            }
+        });
+
+        // Initialize gallery
+        renderGallery();
+    </script>
+</body>
+</html>
