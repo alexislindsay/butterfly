@@ -41,7 +41,7 @@ export default function Home() {
     cardsList.forEach((card, index) => {
       // If card has a specific image path, use that
       if (card.img) {
-        imageMap[index] = `/tarot-cards/${card.img}`;
+        imageMap[index] = `/'D.E.A.D.' Tarot Cards/${card.img}`;
       }
       // Otherwise, pick a random image from the butterfly-images folder
       else if (imagesList.length > 0) {
