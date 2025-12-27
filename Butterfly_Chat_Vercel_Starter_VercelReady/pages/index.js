@@ -4,8 +4,17 @@ export default function Home() {
   const [cards, setCards] = useState([]);
   const [error, setError] = useState(null);
   const [cardImages, setCardImages] = useState({});
+  const [availableImages, setAvailableImages] = useState([]);
 
   useEffect(() => {
+    // First, fetch the list of available images
+    fetch('/api/images')
+      .then((res) => res.json())
+      .then((data) => {
+        setAvailableImages(data.images || []);
+      })
+      .catch((err) => console.error('Failed to load images list:', err));
+
     // Fetch the tarot deck data
     fetch('/deckTarot.json')
       .then((res) => {
@@ -14,30 +23,36 @@ export default function Home() {
       })
       .then((data) => {
         setCards(data.cards);
-        // Assign a random image to each card
-        const images = assignRandomImages(data.cards);
-        setCardImages(images);
       })
       .catch((err) => setError(err.message));
   }, []);
 
-  // Function to get a random image filename
-  const getRandomImageFilename = () => {
-    // This will randomly select from images in /public/butterfly-images/
-    // The images are numbered/named - we'll use a random index
-    const randomNum = Math.floor(Math.random() * 1000);
-    return `/butterfly-images/image${randomNum}.jpg`;
-  };
+  // When both cards and images are loaded, assign random images
+  useEffect(() => {
+    if (cards.length > 0 && availableImages.length > 0) {
+      const images = assignRandomImages(cards, availableImages);
+      setCardImages(images);
+    }
+  }, [cards, availableImages]);
 
-  // Assign a random image to each card on initial load
-  const assignRandomImages = (cardsList) => {
+  // Assign a random image to each card
+  const assignRandomImages = (cardsList, imagesList) => {
     const imageMap = {};
     cardsList.forEach((card, index) => {
-      // Generate a random number for each card
-      const randomImageNum = Math.floor(Math.random() * 1000) + 1;
-      imageMap[index] = `/butterfly-images/image${randomImageNum}.jpg`;
+      // Pick a random image from the actual available images
+      const randomImage = imagesList[Math.floor(Math.random() * imagesList.length)];
+      imageMap[index] = `/butterfly-images/${randomImage}`;
     });
     return imageMap;
+  };
+
+  // Get a random fallback image
+  const getRandomFallbackImage = () => {
+    if (availableImages.length > 0) {
+      const randomImage = availableImages[Math.floor(Math.random() * availableImages.length)];
+      return `/butterfly-images/${randomImage}`;
+    }
+    return '';
   };
 
   return (
@@ -77,22 +92,24 @@ export default function Home() {
             onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
             onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
           >
-            <img
-              src={cardImages[index] || '/butterfly-images/image1.jpg'}
-              alt={card.name}
-              style={{
-                width: '100%',
-                height: '350px',
-                objectFit: 'cover',
-                borderRadius: '8px',
-                marginBottom: '1rem',
-                border: '1px solid #0f3460'
-              }}
-              onError={(e) => {
-                // Fallback to a different random image if one fails to load
-                e.target.src = `/butterfly-images/image${Math.floor(Math.random() * 100) + 1}.jpg`;
-              }}
-            />
+            {cardImages[index] && (
+              <img
+                src={cardImages[index]}
+                alt={card.name}
+                style={{
+                  width: '100%',
+                  height: '350px',
+                  objectFit: 'cover',
+                  borderRadius: '8px',
+                  marginBottom: '1rem',
+                  border: '1px solid #0f3460'
+                }}
+                onError={(e) => {
+                  // Fallback to a different random image if one fails to load
+                  e.target.src = getRandomFallbackImage();
+                }}
+              />
+            )}
             <h2 style={{
               color: '#e94560',
               marginBottom: '0.5rem',
