@@ -27,21 +27,27 @@ export default function Home() {
       .catch((err) => setError(err.message));
   }, []);
 
-  // When both cards and images are loaded, assign random images
+  // When cards are loaded (and optionally images), assign images
   useEffect(() => {
-    if (cards.length > 0 && availableImages.length > 0) {
+    if (cards.length > 0) {
       const images = assignRandomImages(cards, availableImages);
       setCardImages(images);
     }
   }, [cards, availableImages]);
 
-  // Assign a random image to each card
+  // Assign a random image to each card (or use card-specific image if specified)
   const assignRandomImages = (cardsList, imagesList) => {
     const imageMap = {};
     cardsList.forEach((card, index) => {
-      // Pick a random image from the actual available images
-      const randomImage = imagesList[Math.floor(Math.random() * imagesList.length)];
-      imageMap[index] = `/butterfly-images/${randomImage}`;
+      // If card has a specific image path, use that
+      if (card.img) {
+        imageMap[index] = `/tarot-cards/${card.img}`;
+      }
+      // Otherwise, pick a random image from the butterfly-images folder
+      else if (imagesList.length > 0) {
+        const randomImage = imagesList[Math.floor(Math.random() * imagesList.length)];
+        imageMap[index] = `/butterfly-images/${randomImage}`;
+      }
     });
     return imageMap;
   };
